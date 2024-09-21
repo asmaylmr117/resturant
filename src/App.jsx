@@ -87,7 +87,7 @@ const App = () => {
 
   const fetchMeals = async (mealType) => {
     try {
-      const response = await fetch('foods.json');
+      const response = await fetch('/foods.json');
       const data = await response.json();
       setMeals(data[mealType]);
     } catch (error) {
