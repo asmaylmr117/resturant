@@ -249,9 +249,9 @@ const App = () => {
               <h5>Mohammed</h5>
               <span>Manager</span>
               <div className="media">
-                <a href="https://www.facebook.com/profile.php?id=100089133649005"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/+212619629538"><i className="fab fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/sarah__official2000/"><i className="fab fa-instagram"></i></a>
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-whatsapp"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
@@ -269,9 +269,9 @@ const App = () => {
               <h5>ahmed</h5>
               <span>Master Chef</span>
               <div className="media">
-                <a href="https://www.facebook.com/profile.php?id=100014953035548"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/ElSayedKewan20"><i className="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/elsayed_kewan/"><i className="fab fa-instagram"></i></a>
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-twitter"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
               </div>
             </div>
             <div className="chef">
@@ -279,9 +279,9 @@ const App = () => {
               <h5>Osama</h5>
               <span>Master Chef</span>
               <div className="media">
-                <a href="https://www.facebook.com/profile.php?id=100014953035548"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/ElSayedKewan20"><i className="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/elsayed_kewan/"><i className="fab fa-instagram"></i></a>
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-twitter"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
               </div>
             </div>
             <div className="chef">
@@ -289,9 +289,9 @@ const App = () => {
               <h5>ibrahim</h5>
               <span>Master Chef</span>
               <div className="media">
-                <a href="https://www.facebook.com/profile.php?id=100014953035548"><i className="fab fa-facebook-f"></i></a>
-                <a href="https://twitter.com/ElSayedKewan20"><i className="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/elsayed_kewan/"><i className="fab fa-instagram"></i></a>
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-twitter"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
               </div>
             </div>
            </div>
