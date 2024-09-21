@@ -1,8 +1,9 @@
-
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 const App = () => {
+  const [meals, setMeals] = useState([]);
+  const [activeMealType, setActiveMealType] = useState('breakfast');
   useEffect(() => {
     const bars = document.querySelector(".hamburger svg");
     const X_color = document.querySelector(".line");
@@ -80,6 +81,20 @@ const App = () => {
     handleScroll(footer, '#contact', 670);
   }, []);
 
+  useEffect(() => {
+    fetchMeals(activeMealType);
+  }, [activeMealType]);
+
+  const fetchMeals = async (mealType) => {
+    try {
+      const response = await fetch('foods.json');
+      const data = await response.json();
+      setMeals(data[mealType]);
+    } catch (error) {
+      console.error('Error fetching meals:', error);
+    }
+  };
+
   return (
     <div>
       <div className="to_top">↑</div>
@@ -126,10 +141,10 @@ const App = () => {
       <div className="about" id="about">
         <div className="container">
           <div className="left-imgs">
-            <div className="image" ><img src="./img/about-1.jpg" alt="" /></div>
-            <div className="image"><img src="./img/about-2.jpg" alt="" /></div>
-            <div className="image"><img src="./img/about-3.jpg" alt="" /></div>
-            <div className="image"><img src="./img/about-4.jpg" alt="" /></div>
+            <div className="image"data-aos="fade-right" ><img src="./img/about-1.jpg" alt="" /></div>
+            <div className="image"data-aos="fade-right" ><img src="./img/about-2.jpg" alt="" /></div>
+            <div className="image"data-aos="fade-right" ><img src="./img/about-3.jpg" alt="" /></div>
+            <div className="image"data-aos="fade-right" ><img src="./img/about-4.jpg" alt="" /></div>
           </div>
           <div className="R-cotent">
             <div className="M-heading"><h5>About Us</h5></div>
@@ -186,90 +201,43 @@ const App = () => {
             <div className="M-heading"><h5>Food Menu</h5></div>
             <h1>Most Popular Items</h1>
             <div className="mealsBtn">
-              <div className="mealBtn active">
-                <i className="fas fa-mug-saucer"></i>
+              <div className={`mealBtn ${activeMealType === 'breakfast' ? 'active' : ''}`} onClick={() => setActiveMealType('breakfast')}>
+                <i className="fas fa-coffee"></i>
                 <div className="des">
                   <span>Popular</span>
                   <h6>Breakfast</h6>
                 </div>
               </div>
-              <div className="mealBtn">
-                <i className="fas fa-burger"></i>
+              <div className={`mealBtn ${activeMealType === 'lunch' ? 'active' : ''}`} onClick={() => setActiveMealType('lunch')}>
+                <i className="fas fa-hamburger"></i>
                 <div className="des">
                   <span>Popular</span>
                   <h6>Lunch</h6>
                 </div>
               </div>
-              <div className="mealBtn">
+              <div className={`mealBtn ${activeMealType === 'dinner' ? 'active' : ''}`} onClick={() => setActiveMealType('dinner')}>
                 <i className="fa fa-utensils me-3"></i>
-                <div className="des">
+                <div className="des" >
                   <span>Popular</span>
                   <h6>Dinner</h6>
                 </div>
+              </div> 
               </div>
-            </div>
           </div>
-          <div className="meals">
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2017/11/Tagine-300x166.png" alt="" />
-              <div className="descrip">
-                <h5>Tagine <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
+          <div className="meals" data-aos="fade-right">
+            {meals.map((meal, index) => (
+              <div className="meal" key={index} data-aos="fade-right">
+                <img src={meal.image} alt={meal.name} />
+                <div className="descrip"data-aos="fade-right">
+                  <h5>{meal.name} <span>{meal.price}</span></h5>
+                  <span>{meal.description}</span>
+                </div>
               </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2017/11/Kefta-300x166.png" alt="" />
-              <div className="descrip">
-                <h5>Kefta & Kefta Tagine <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2023/09/moroccan-food-Msemen-edited.png" alt="" />
-              <div className="descrip">
-                <h5>Msemen <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2017/11/Harira-300x201.jpg" alt="" />
-              <div className="descrip">
-                <h5>Harira <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2017/11/Coucous.png" alt="" />
-              <div className="descrip">
-                <h5>Couscous <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2023/09/moroccan-food-zaalouk-edited.jpeg" alt="" />
-              <div className="descrip">
-                <h5>Zaalouk <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2017/11/Pastilla-300x200.jpg" alt="" />
-              <div className="descrip">
-                <h5>Pastilla <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
-            <div className="meal">
-              <img src="https://www.citylifemadrid.com/wp-content/uploads/2023/09/Moroccan-food-mechoui-edited.jpg" alt="" />
-              <div className="descrip">
-                <h5>Brochette <span>$115</span></h5>
-                <span>Ipsum ipsum clita erat amet dolor justo diam</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
-      <div className="manager">
+          <div className="manager">
         <div className="container">
           <div className="title">
             <div className="M-heading"><h5>The Boss</h5></div>
@@ -308,7 +276,7 @@ const App = () => {
             </div>
             <div className="chef">
               <div className="image"><img src="./img/team-2.jpg" alt="" /></div>
-              <h5>ahmed</h5>
+              <h5>Osama</h5>
               <span>Master Chef</span>
               <div className="media">
                 <a href="https://www.facebook.com/profile.php?id=100014953035548"><i className="fab fa-facebook-f"></i></a>
@@ -318,7 +286,7 @@ const App = () => {
             </div>
             <div className="chef">
               <div className="image"><img src="./img/team-3.jpg" alt="" /></div>
-              <h5>ahmed</h5>
+              <h5>ibrahim</h5>
               <span>Master Chef</span>
               <div className="media">
                 <a href="https://www.facebook.com/profile.php?id=100014953035548"><i className="fab fa-facebook-f"></i></a>
@@ -404,7 +372,7 @@ const App = () => {
           </div>
         </div>
         <div className="madeB">
-          <p>© resturant, All Right Reserved. Made with <i className="fas fa-heart"></i> By <span>MOSTAFA ISMAIL</span></p>
+          <p>© resturant, All Right Reserved. Made with <i className="fas fa-heart" ></i> By <a href="https://protofolio-delta.vercel.app/" class="mostafa" > Eng: MOSTAFA ISMAIL</a></p>
         </div>
       </footer>
     </div>
@@ -412,3 +380,4 @@ const App = () => {
 };
 
 export default App;
+
